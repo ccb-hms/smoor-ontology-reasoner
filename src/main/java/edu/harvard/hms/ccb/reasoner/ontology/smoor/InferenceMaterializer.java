@@ -35,29 +35,29 @@ public class InferenceMaterializer {
         final OWLDataFactory owlDataFactory = owlOntologyManager.getOWLDataFactory();
         Set<OWLAxiom> inferences = new HashSet<>();
         Map<OWLClass, Set<OWLClassExpression>> inferencesMap = new HashMap<>();
-        Map<OWLClass, OWLClassExpression> saturationMap = null;
+        Map<OWLClass, OWLClassExpression> saturationMap = new HashMap<>();
         if(saturationDetails.isPresent()) {
             saturationMap = saturationDetails.get().getSaturationMap();
         }
         for(OWLClass owlClass : ontology.getClassesInSignature()) {
-            Set<OWLClass> superClasses = reasoner.getSuperClasses(owlClass, directOnly).getFlattened();
-            Set<OWLClassExpression> superClassExpressions = new HashSet<>();
-            for(OWLClass superClass : superClasses) {
-                if(!superClass.isOWLThing()) {
-                    OWLClassExpression superClassExpression = superClass;
-                    if (saturationMap != null && saturationMap.containsKey(superClass)) {
-                        superClassExpression = saturationMap.get(superClass);
+            if(!saturationMap.containsKey(owlClass)) {
+                Set<OWLClass> superClasses = reasoner.getSuperClasses(owlClass, directOnly).getFlattened();
+                Set<OWLClassExpression> superClassExpressions = new HashSet<>();
+                for (OWLClass superClass : superClasses) {
+                    if (!superClass.isOWLThing()) {
+                        OWLClassExpression superClassExpression = superClass;
+                        if (saturationMap.containsKey(superClass)) {
+                            superClassExpression = saturationMap.get(superClass);
+                        }
+                        inferences.add(owlDataFactory.getOWLSubClassOfAxiom(owlClass, superClassExpression));
+                        superClassExpressions.add(superClassExpression);
                     }
-                    inferences.add(owlDataFactory.getOWLSubClassOfAxiom(owlClass, superClassExpression));
-                    superClassExpressions.add(superClassExpression);
                 }
+                inferencesMap.put(owlClass, superClassExpressions);
             }
-            inferencesMap.put(owlClass, superClassExpressions);
         }
         owlOntologyManager.addAxioms(ontology, inferences);
-        if(saturationMap != null) {
-            owlOntologyManager.removeAxioms(ontology, saturationDetails.get().getAddedAxioms());
-        }
+        saturationDetails.ifPresent(details -> ontology.removeAxioms(details.getAddedAxioms()));
         return new ReasoningResults(ontology, inferences, inferencesMap);
     }
 }

@@ -2,10 +2,7 @@ package edu.harvard.hms.ccb.reasoner.ontology.smoor;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;
-import org.semanticweb.owlapi.model.OWLAxiom;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.*;
 import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -35,19 +32,41 @@ public final class ReasoningResults {
         this.inferredClassFrameMap = new HashMap<>(checkNotNull(inferredClassFrameMap));
     }
 
+    /**
+     * Get the ontology with all inferences explicitly asserted
+     * @return OWL ontology with inferred axioms asserted
+     */
     @Nonnull
     public OWLOntology getOntology() {
         return ontology;
     }
 
+    /**
+     * Get the set of all inferred axioms
+     * @return Set of inferred OWL axioms
+     */
     @Nonnull
     public Set<OWLAxiom> getInferredAxioms() {
         return inferredAxioms;
     }
 
+    /**
+     * Get the map of ontology classes to their inferred superclass expressions
+     * @return Inferred class frame map that includes superclass expressions
+     */
     @Nonnull
     public Map<OWLClass, Set<OWLClassExpression>> getInferredClassFrameMap() {
         return inferredClassFrameMap;
+    }
+
+    /**
+     * Save the inferred ontology to the specified output file
+     * @param outputFile    Output file for the inferred ontology
+     * @throws OWLOntologyStorageException  if unable to save ontology to specified file
+     */
+    public void saveInferredOntology(@Nonnull String outputFile) throws OWLOntologyStorageException {
+        checkNotNull(outputFile);
+        ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(outputFile));
     }
 
     @Override

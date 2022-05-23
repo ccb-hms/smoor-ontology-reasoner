@@ -8,9 +8,10 @@ import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 import javax.annotation.Nonnull;
+import java.io.File;
 
-@Command(name = "smoor-reasoner", mixinStandardHelpOptions = true, version = "1.0.0",
-        description = "Subconcept-based Meta OWL Ontology Reasoner")
+@Command(name = "smoor", mixinStandardHelpOptions = true, version = "1.0.0",
+        description = "Subconcept Meta OWL Ontology Reasoner")
 public class SmoorCli implements Runnable {
 
     @Parameters(index = "0", description = "File path to ontology.")
@@ -41,11 +42,14 @@ public class SmoorCli implements Runnable {
     @Override
     public void run() {
         ontologyPath = isValidIri(ontologyPath);
-        output = isValidIri(output);
+        if (output == null) {
+            output = isValidIri(System.getProperty("user.dir") + File.separator + "smoor-output.owl");
+            System.out.println(output);
+        }
         try {
-            SmoorReasoner smoorReasoner = new SmoorReasoner();
+            Smoor smoorReasoner = new Smoor();
             ReasoningResults results = smoorReasoner.loadOntologyAndReason(ontologyPath, reasoner, saturate, directOnly);
-            smoorReasoner.saveOntology(results, output);
+            results.saveInferredOntology(output);
         } catch (OWLOntologyCreationException | OWLOntologyStorageException e) {
             e.printStackTrace();
         }

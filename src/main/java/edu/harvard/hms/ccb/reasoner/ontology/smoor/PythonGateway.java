@@ -5,7 +5,7 @@ import py4j.GatewayServer;
 public class PythonGateway {
 
     public static void main(String[] args) {
-        GatewayServer gatewayServer = new GatewayServer(new SmoorReasoner());
+        GatewayServer gatewayServer = new GatewayServer(new Smoor());
         gatewayServer.start();
     }
 

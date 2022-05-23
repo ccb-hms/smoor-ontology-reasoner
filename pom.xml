@@ -10,7 +10,7 @@
     <packaging>jar</packaging>
 
     <name>smoor-reasoner</name>
-    <description>Subconcept-based Meta OWL Ontology Reasoner: an OWL reasoner wrapper that materialize inferences
+    <description>Subconcept Meta OWL Ontology Reasoner: an OWL reasoner wrapper that materialize inferences
         obtained from reasoning over an ontology after saturating it with named subconcepts.</description>
     <url>https://github.com/ccb-hms/smoor-ontology-reasoner</url>
     <inceptionYear>2022</inceptionYear>
@@ -176,6 +176,8 @@
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
+                    <finalName>smoor</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>
                     <execution>
@@ -190,6 +192,19 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

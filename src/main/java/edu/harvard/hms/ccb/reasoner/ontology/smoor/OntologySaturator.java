@@ -34,8 +34,8 @@ public class OntologySaturator {
             if(classExpression.isAnonymous()) {
                 OWLClass newDefinedClass = df.getOWLClass(IRI.create("C_" + UUID.randomUUID()));
                 saturationMap.put(newDefinedClass, classExpression);
-                OWLAxiom ax = df.getOWLEquivalentClassesAxiom(newDefinedClass, classExpression);
-                additionalAxioms.add(ax);
+                OWLAxiom newEquivalentClassesAxiom = df.getOWLEquivalentClassesAxiom(newDefinedClass, classExpression);
+                additionalAxioms.add(newEquivalentClassesAxiom);
             }
         }
         ontology.getOWLOntologyManager().addAxioms(ontology, additionalAxioms);

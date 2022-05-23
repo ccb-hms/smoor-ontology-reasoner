@@ -13,14 +13,14 @@ import java.util.Optional;
 import java.util.Set;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class SmoorReasoner {
+public class Smoor {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(SmoorReasoner.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Smoor.class);
 
     /**
      * Constructor
      */
-    public SmoorReasoner() {
+    public Smoor() {
         // no-op
     }
 
@@ -109,21 +109,5 @@ public class SmoorReasoner {
         OWLReasoner reasoner = reasonerFactory.createReasoner(ontology, config);
         LOGGER.info("Created reasoner " + reasoner.getReasonerName() + " v" + reasoner.getReasonerVersion());
         return reasoner;
-    }
-
-    /**
-     * Save the inferred ontology to the specified output file
-     * @param reasoningResults  Reasoning results obtained
-     * @param outputFile    Output file for the inferred ontology
-     * @throws OWLOntologyStorageException  if unable to save ontology to specified file
-     */
-    public void saveOntology(@Nonnull ReasoningResults reasoningResults, @Nonnull String outputFile)
-            throws OWLOntologyStorageException {
-        checkNotNull(reasoningResults);
-        checkNotNull(outputFile);
-        LOGGER.info("Saving ontology to: " + outputFile);
-        OWLOntology ontology = reasoningResults.getOntology();
-        ontology.getOWLOntologyManager().saveOntology(ontology, IRI.create(outputFile));
-        LOGGER.info("...done");
     }
 }
