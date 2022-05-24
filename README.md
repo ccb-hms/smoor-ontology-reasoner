@@ -21,8 +21,7 @@ For querying purposes (e.g. in a triple store with insufficient reasoning suppor
 inferences between named classes and ontology _subconcepts_ (i.e. complex OWL class expressions).
 
 **_smoor_** treats subconcepts as named classes, by adding `EquivalentClasses` axioms between temporary classes and 
-subconcepts that occur in the ontology. **_smoor_** then performs reasoning over the ontology saturated with the equivalence 
-axioms. For example:
+subconcepts that occur in the ontology. For the example above, it would create the axioms:
 
 `X1 EquivalentTo part-of (part-of E)`
 
