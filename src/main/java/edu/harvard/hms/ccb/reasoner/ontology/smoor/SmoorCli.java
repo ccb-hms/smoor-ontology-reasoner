@@ -44,7 +44,6 @@ public class SmoorCli implements Runnable {
         ontologyPath = isValidIri(ontologyPath);
         if (output == null) {
             output = isValidIri(System.getProperty("user.dir") + File.separator + "smoor-output.owl");
-            System.out.println(output);
         }
         try {
             Smoor smoorReasoner = new Smoor();
