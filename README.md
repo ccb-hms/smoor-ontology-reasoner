@@ -37,6 +37,11 @@ Where `Xi` stands for a new, temporary class. The output from **_smoor_** would 
 
 `A SubClassOf part-of (part-of E)`
 
+### Related Tools
+
+The *[Expression Materializing Reasoner](http://robot.obolibrary.org/materialize)* provided by [ROBOT](https://github.com/ontodev/robot) 
+is somewhat similar to **_smoor_**, except that it only materializes inferences involving *existential* superclass expressions 
+of the form `A SubClassOf p some B` where `B` is a named class.
 
 ## Installation
 
