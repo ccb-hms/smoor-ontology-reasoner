@@ -39,13 +39,17 @@ The output from **_smoor_** would then contain inferences such as:
 
 The build tool used is [Maven](https://maven.apache.org). Make sure it is [installed](https://maven.apache.org/install.html) and then run:
 
-```mvn clean package``` 
+```
+mvn clean package
+``` 
 
 This will create a self-contained JAR file in `target/smoor.jar`.
 
 ## Usage
 
-```java -jar target/smoor.jar```
+```
+java -jar target/smoor.jar
+```
 
 ## Dependencies
 
