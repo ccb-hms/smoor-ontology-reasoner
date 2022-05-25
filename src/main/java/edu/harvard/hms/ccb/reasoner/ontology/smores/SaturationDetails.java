@@ -1,4 +1,4 @@
-package edu.harvard.hms.ccb.reasoner.ontology.smoor;
+package edu.harvard.hms.ccb.reasoner.ontology.smores;
 
 import com.google.common.base.MoreObjects;
 import com.google.common.base.Objects;

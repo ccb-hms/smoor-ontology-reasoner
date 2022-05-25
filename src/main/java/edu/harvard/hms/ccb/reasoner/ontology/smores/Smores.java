@@ -1,4 +1,4 @@
-package edu.harvard.hms.ccb.reasoner.ontology.smoor;
+package edu.harvard.hms.ccb.reasoner.ontology.smores;
 
 import org.semanticweb.HermiT.ReasonerFactory;
 import org.semanticweb.elk.owlapi.ElkReasonerFactory;
@@ -13,14 +13,14 @@ import java.util.Optional;
 import java.util.Set;
 import static com.google.common.base.Preconditions.checkNotNull;
 
-public class Smoor {
+public class Smores {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(Smoor.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(Smores.class);
 
     /**
      * Constructor
      */
-    public Smoor() {
+    public Smores() {
         // no-op
     }
 

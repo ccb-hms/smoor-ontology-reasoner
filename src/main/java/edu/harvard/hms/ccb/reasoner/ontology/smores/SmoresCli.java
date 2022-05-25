@@ -1,4 +1,4 @@
-package edu.harvard.hms.ccb.reasoner.ontology.smoor;
+package edu.harvard.hms.ccb.reasoner.ontology.smores;
 
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
@@ -10,9 +10,9 @@ import picocli.CommandLine.Parameters;
 import javax.annotation.Nonnull;
 import java.io.File;
 
-@Command(name = "smoor", mixinStandardHelpOptions = true, version = "1.0.0",
-        description = "Subconcept Meta OWL Ontology Reasoner")
-public class SmoorCli implements Runnable {
+@Command(name = "smores", mixinStandardHelpOptions = true, version = "1.0.0",
+        description = "Subconcept Meta Ontology Reasoner")
+public class SmoresCli implements Runnable {
 
     @Parameters(index = "0", description = "File path to ontology.")
     private String ontologyPath;
@@ -35,7 +35,7 @@ public class SmoorCli implements Runnable {
     private boolean directOnly = false;
 
     public static void main(String... args) {
-        int exitCode = new CommandLine(new SmoorCli()).execute(args);
+        int exitCode = new CommandLine(new SmoresCli()).execute(args);
         System.exit(exitCode);
     }
 
@@ -43,11 +43,11 @@ public class SmoorCli implements Runnable {
     public void run() {
         ontologyPath = isValidIri(ontologyPath);
         if (output == null) {
-            output = isValidIri(System.getProperty("user.dir") + File.separator + "smoor-output.owl");
+            output = isValidIri(System.getProperty("user.dir") + File.separator + "smores-output.owl");
         }
         try {
-            Smoor smoorReasoner = new Smoor();
-            ReasoningResults results = smoorReasoner.loadOntologyAndReason(ontologyPath, reasoner, saturate, directOnly);
+            Smores smoresReasoner = new Smores();
+            ReasoningResults results = smoresReasoner.loadOntologyAndReason(ontologyPath, reasoner, saturate, directOnly);
             results.saveInferredOntology(output);
         } catch (OWLOntologyCreationException | OWLOntologyStorageException e) {
             e.printStackTrace();

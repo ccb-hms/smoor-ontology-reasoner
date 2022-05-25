@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>edu.harvard.hms.ccb</groupId>
-    <artifactId>smoor-reasoner</artifactId>
+    <artifactId>smores-reasoner</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>smoor-reasoner</name>
-    <description>Subconcept Meta OWL Ontology Reasoner: an OWL reasoner wrapper that materialize inferences
+    <name>smores-reasoner</name>
+    <description>Subconcept Meta Ontology Reasoner: an OWL reasoner wrapper that materialize inferences
         obtained from reasoning over an ontology after saturating it with named subconcepts.</description>
-    <url>https://github.com/ccb-hms/smoor-ontology-reasoner</url>
+    <url>https://github.com/ccb-hms/smores-ontology-reasoner</url>
     <inceptionYear>2022</inceptionYear>
 
     <licenses>
         <license>
             <name>MIT License</name>
-            <url>https://raw.githubusercontent.com/ccb-hms/smoor-ontology-reasoner/master/LICENSE</url>
+            <url>https://raw.githubusercontent.com/ccb-hms/smores-ontology-reasoner/master/LICENSE</url>
         </license>
     </licenses>
 
@@ -32,13 +32,13 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ccb-hms/smoor-ontology-reasoner.git</connection>
-        <developerConnection>scm:git:ssh://github.com:ccb-hms/smoor-ontology-reasoner.git</developerConnection>
-        <url>https://github.com/ccb-hms/smoor-ontology-reasoner</url>
+        <connection>scm:git:git://github.com/ccb-hms/smores-ontology-reasoner.git</connection>
+        <developerConnection>scm:git:ssh://github.com:ccb-hms/smores-ontology-reasoner.git</developerConnection>
+        <url>https://github.com/ccb-hms/smores-ontology-reasoner</url>
     </scm>
 
     <issueManagement>
-        <url>https://github.com/ccb-hms/smoor-ontology-reasoner/issues</url>
+        <url>https://github.com/ccb-hms/smores-ontology-reasoner/issues</url>
     </issueManagement>
 
     <properties>
@@ -169,14 +169,14 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>edu.harvard.hms.ccb.reasoner.ontology.smoor.SmoorCli</mainClass>
+                            <mainClass>edu.harvard.hms.ccb.reasoner.ontology.smores.SmoresCli</mainClass>
                             <addClasspath>true</addClasspath>
                         </manifest>
                     </archive>
                     <descriptorRefs>
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
-                    <finalName>smoor</finalName>
+                    <finalName>smores</finalName>
                     <appendAssemblyId>false</appendAssemblyId>
                 </configuration>
                 <executions>

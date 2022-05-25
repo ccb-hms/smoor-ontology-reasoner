@@ -1,6 +1,6 @@
-# smoor-ontology-reasoner
+# smores-ontology-reasoner
 
-**_smoor_**—**S**ubconcept **M**eta **O**WL **O**ntology **R**easoner—is an OWL reasoner wrapper 
+**_smores_**—**S**ubconcept **M**eta **O**ntology **Re**a**s**oner—is an OWL reasoner wrapper 
 that materializes inferences obtained from reasoning over an ontology after saturating it with named subconcepts 
 (via equivalence axioms between (temporary) named classes and complex class expressions that appear in ontology axioms).
 
@@ -20,7 +20,7 @@ axiom set, since the classification reasoning task computes subsumptions between
 For querying purposes (e.g. in a triple store with insufficient reasoning support), it is often practical to explicitly assert
 inferences between named classes and ontology _subconcepts_ (i.e. complex OWL class expressions).
 
-**_smoor_** treats subconcepts as named classes, by adding `EquivalentClasses` axioms between temporary classes and 
+**_smores_** treats subconcepts as named classes, by adding `EquivalentClasses` axioms between temporary classes and 
 subconcepts that occur in the ontology. For the example above, it would create the axioms:
 
 `X1 EquivalentTo part-of (part-of E)`
@@ -29,7 +29,7 @@ subconcepts that occur in the ontology. For the example above, it would create t
 
 `X3 EquivalentTo part-of D`
 
-Where `Xi` stands for a new, temporary class. The output from **_smoor_** would then contain inferences such as:
+Where `Xi` stands for a new, temporary class. The output from **_smores_** would then contain inferences such as:
 
 `A SubClassOf part-of D`
 
@@ -39,8 +39,8 @@ Where `Xi` stands for a new, temporary class. The output from **_smoor_** would 
 
 ### Related Tools
 
-The *[Expression Materializing Reasoner](http://robot.obolibrary.org/materialize)* provided by [ROBOT](https://github.com/ontodev/robot) 
-is somewhat similar to **_smoor_**, except that it only materializes inferences involving *existential* superclass expressions 
+The *[Expression Materializing Reasoner (EMR)](http://robot.obolibrary.org/materialize)* provided by [ROBOT](https://github.com/ontodev/robot) 
+is somewhat similar to **_smores_**, except that *EMR* only materializes inferences involving *existential* superclass expressions 
 of the form `A SubClassOf p some B` where `B` is a named class.
 
 ## Installation
@@ -51,12 +51,12 @@ The build tool used is [Maven](https://maven.apache.org). Make sure it is [insta
 mvn clean package
 ``` 
 
-This will create a self-contained JAR file in `target/smoor.jar`.
+This will create a self-contained JAR file in `target/smores.jar`.
 
 ## Usage
 
 ```
-java -jar target/smoor.jar
+java -jar target/smores.jar
 ```
 
 ## Dependencies

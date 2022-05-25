@@ -1,4 +1,4 @@
-package edu.harvard.hms.ccb.reasoner.ontology.smoor;
+package edu.harvard.hms.ccb.reasoner.ontology.smores;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.*;
