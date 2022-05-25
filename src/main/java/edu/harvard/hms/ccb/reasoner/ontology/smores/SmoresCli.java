@@ -46,8 +46,8 @@ public class SmoresCli implements Runnable {
             output = isValidIri(System.getProperty("user.dir") + File.separator + "smores-output.owl");
         }
         try {
-            Smores smoresReasoner = new Smores();
-            ReasoningResults results = smoresReasoner.loadOntologyAndReason(ontologyPath, reasoner, saturate, directOnly);
+            Smores smores = new Smores();
+            ReasoningResults results = smores.loadOntologyAndReason(ontologyPath, reasoner, saturate, directOnly);
             results.saveInferredOntology(output);
         } catch (OWLOntologyCreationException | OWLOntologyStorageException e) {
             e.printStackTrace();

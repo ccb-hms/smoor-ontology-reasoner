@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>edu.harvard.hms.ccb</groupId>
-    <artifactId>smores-reasoner</artifactId>
+    <artifactId>smores</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>smores-reasoner</name>
+    <name>smores</name>
     <description>Subconcept Meta Ontology Reasoner: an OWL reasoner wrapper that materialize inferences
         obtained from reasoning over an ontology after saturating it with named subconcepts.</description>
     <url>https://github.com/ccb-hms/smores-ontology-reasoner</url>
